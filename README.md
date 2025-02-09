@@ -1,22 +1,44 @@
 # Escaneo de Puertos
 
-Este script realiza un escaneo de puertos en una dirección IP específica.
+Este proyecto contiene herramientas para realizar escaneos de puertos en una dirección IP específica, lo que es útil para detectar puertos abiertos o cerrados en un sistema remoto.
 
 ## Requisitos
 
 - Python 3.x
+- Librerías requeridas:
+    socket (viene por defecto con Python, no es necesario instalarla)
+
+## Instalación
+
+1. Clona este repositorio o descarga los archivos.
+
+    git clone <URL del repositorio>
+
+2. Navega al directorio donde descargaste o clonaste el repositorio.
 
 ## Uso
+    
+1. Ejecuta el script principal Menu.py con Python:
 
-1. Clona este repositorio o descarga el archivo `Escaneo.py`.
-2. Ejecuta el script con Python:
+    python Menu.py
+
+2. El script proporcionará un menú donde podrás seleccionar diferentes herramientas de escaneo de puertos
+
+
 
 ```sh
-python Escaneo.py
 
-Introduce la dirección IP que deseas escanear cuando se te solicite.
-Descripción
-El script escanea los siguientes puertos: 21, 22, 80, 443, 8080. Para cada puerto, se verifica si está abierto o cerrado.
+Descripción de las herramientas
+Escaneo Rápido
+El script Escaneo.py realiza un escaneo rápido de los puertos más esenciales en una dirección IP específica. Los puertos a escanear están predefinidos en el código.
+
+Los resultados del escaneo se guardan en un archivo llamado escan_Rapido.txt. En este archivo, podrás ver los puertos abiertos y cerrados de la IP escaneada.
+Escaneo Completo (Próximamente)
+Estamos trabajando en una versión completa de escaneo que incluirá la posibilidad de escanear todos los puertos (1-65535). Mantente al tanto para futuras actualizaciones.
 
 Autor
-Roberto luzanilla
+Roberto Luzanilla
+Desarrollador y aprendiz de ciberseguridad.
+
+Contribuciones
+Si tienes alguna sugerencia o mejora, no dudes en abrir un issue o enviar un pull request.
