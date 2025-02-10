@@ -62,43 +62,42 @@ def escaneo_Rapido(ip, puerto):#Un escaneo a los puertos mas comunes
 
 
 def seleccion_Tipos(): #Menu de la clase Escaneo
-        while True:
-            print("\nSelecciona una opcion\n")
-            print("1-Ping --Verifica si hay conexion activa a la IP\n") #Verifica si hay conexion
-            print("2-Escaneo de puertos rapido --Escaneo Rapido, verifica los puertos mas escenciales\n") #Escaneo de puertos
-            print("3-Escaneo de puertos completo --Escaneo Completo, verifica todos los puertos\n")#Escaneo de puertos PRONTO
-            print("-----Mas opciones pronto-----\n")
-            print("0-Salir")
-            try:
-                opcion = int(input("Introduce una opción: "))
-            except ValueError:
-                print("Por favor, introduce un número entero.")
+    while True:
+        print("\nSelecciona una opcion\n")
+        print("1-Ping --Verifica si hay conexion activa a la IP\n") #Verifica si hay conexion
+        print("2-Escaneo de puertos rapido --Escaneo Rapido, verifica los puertos mas escenciales\n") #Escaneo de puertos
+        print("3-Escaneo de puertos completo --Escaneo Completo, verifica todos los puertos\n")#Escaneo de puertos PRONTO
+        print("-----Mas opciones pronto-----\n")
+        print("0-Salir")
+        try:
+            opcion = int(input("Introduce una opción: "))
+        except ValueError:
+            print("Por favor, introduce un número entero.")
             continue
-
-            if opcion == 1:
-                print("Ping")
-                ip_objetivo = input("Introduce la IP a escanear:")
-                if verificar_IP(ip_objetivo):
-                    ping_Detallado(ip_objetivo)
-                else:
-                    print("La IP no es valida")
-            elif opcion == 2: 
-                print("Escaneo Rapido")
-                ip_objetivo = input("Introduce la IP a escanear: ")   
-                if  verificar_IP(ip_objetivo):
-                        puertos_a_escanear = [21,22,23,25,53,80,110,143,443,631,3389,3306,5432,5900,8080,9200]#Puertos comunes a escanear
-                        escaneo_Rapido(ip_objetivo, puertos_a_escanear)
-                else:
-                    print("La IP no es valida") 
-            elif opcion == 3:
-                print("Escaneo Completo")
-                print("----Pronto----")
-            elif opcion == 0:
-                print("Saliendo...")
-                print("Gracias ;)")
-                break
-            else :
-                print("Opcion no valida")
+        if opcion == 1:
+            print("Ping")
+            ip_objetivo = input("Introduce la IP a escanear:")
+            if verificar_IP(ip_objetivo):
+                ping_Detallado(ip_objetivo)
+            else:
+                print("La IP no es valida")
+        elif opcion == 2: 
+            print("Escaneo Rapido")
+            ip_objetivo = input("Introduce la IP a escanear: ")   
+            if  verificar_IP(ip_objetivo):
+                puertos_a_escanear = [21,22,23,25,53,80,110,143,443,631,3389,3306,5432,5900,8080,9200]#Puertos comunes a escanear
+                escaneo_Rapido(ip_objetivo, puertos_a_escanear)
+            else:
+                print("La IP no es valida") 
+        elif opcion == 3:
+            print("Escaneo Completo")
+            print("----Pronto----")
+        elif opcion == 0:
+            print("Saliendo...")
+            print("Gracias ;)")
+            break
+        else :
+            print("Opcion no valida")
 
 if __name__ == "__main__": #Para que se ejecute el menu
     seleccion_Tipos()
