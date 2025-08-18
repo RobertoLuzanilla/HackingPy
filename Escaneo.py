@@ -19,20 +19,22 @@ def ping_Detallado(ip): #Lanza un ping a la ip que se introduce
         time.sleep(3) #Hace que espere 3 segundos antes de hacer el siguiente ping
         mensaje = f"{i}- Haciendo ping a la IP {ip}\n" #Mensaje que se guardara en el archivo de texto
         escribir_Log(mensaje, "ping_Detallado.txt")
-        try: 
-            ping = ping3.ping(ip) * 1000  # Multiplicamos por 1000 para obtener el tiempo en milisegundos
-            if ping is None:
-                print(f"{i}- No se pudo obtener el ping a la IP {ip}")
-                mensaje = f"{i}- No se pudo obtener el ping a la IP {ip}\n" #Mensaje que se guardara en el archivo de texto
-                escribir_Log(mensaje, "ping_Detallado.txt")
-            else:
-                print(f"{i}- El ping a la IP {ip} es de: {ping:.2f} ms")
-                mensaje = f"{i}- El ping a la IP {ip} es de: {ping:.2f} ms\n" #Mensaje que se guardara en el archivo de texto
-                escribir_Log(mensaje, "ping_Detallado.txt")
-
+        try:
+            resultado = ping3.ping(ip)
         except Exception as e:
             print(f"{i}- Error al hacer ping a la IP {ip}: {e}")
             mensaje = f"{i}- Error al hacer ping a la IP {ip}: {e}\n" #Mensaje que se guardara en el archivo de texto
+            escribir_Log(mensaje, "ping_Detallado.txt")
+            continue
+
+        if resultado is None:
+            print(f"{i}- No se pudo obtener el ping a la IP {ip}")
+            mensaje = f"{i}- No se pudo obtener el ping a la IP {ip}\n" #Mensaje que se guardara en el archivo de texto
+            escribir_Log(mensaje, "ping_Detallado.txt")
+        else:
+            ping_ms = resultado * 1000  # Convertimos a milisegundos
+            print(f"{i}- El ping a la IP {ip} es de: {ping_ms:.2f} ms")
+            mensaje = f"{i}- El ping a la IP {ip} es de: {ping_ms:.2f} ms\n" #Mensaje que se guardara en el archivo de texto
             escribir_Log(mensaje, "ping_Detallado.txt")
 
 def escaneo_Rapido(ip, puerto):#Un escaneo a los puertos mas comunes
@@ -58,7 +60,7 @@ def escaneo_Rapido(ip, puerto):#Un escaneo a los puertos mas comunes
 
         s.close()
 
-    print("Escaneo finalizado\n,\n")
+    print("Escaneo finalizado\n\n")
 
 
 def seleccion_Tipos(): #Menu de la clase Escaneo
